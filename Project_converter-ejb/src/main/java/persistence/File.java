@@ -17,6 +17,8 @@ public class File implements Serializable {
     private String name;
     private String type;
 	private static final long serialVersionUID = 1L;
+	@ManyToOne
+	private User user;
 	
 	public File(int id, String name, String type) {
 		super();

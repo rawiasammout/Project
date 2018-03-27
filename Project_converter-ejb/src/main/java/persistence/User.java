@@ -1,6 +1,8 @@
 package persistence;
 
 import java.io.Serializable;
+import java.util.List;
+
 import javax.persistence.*;
 
 /**
@@ -17,6 +19,34 @@ public class User implements Serializable {
 	private TypeOfUser type;
 	private String login;
 	private String password;
+	private String name;
+	@OneToMany (mappedBy="user",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+	private List <File> files;
+	public List<File> getFiles() {
+		return files;
+	}
+
+	public void setFiles(List<File> files) {
+		this.files = files;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getLastname() {
+		return lastname;
+	}
+
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
+	}
+
+	private String lastname;
 	
 	
 	public User(int id, TypeOfUser type, String login, String password) {
